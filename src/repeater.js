@@ -72,6 +72,7 @@ $.fn.repeater = function (fig) {
   fig = fig || {};
 
   var setList;
+  var resetIndexes;
 
   $(this).each(function () {
     var $self = $(this);
@@ -297,6 +298,10 @@ $.fn.repeater = function (fig) {
       foreach(rows, addItem);
     };
 
+    resetIndexes = function () {
+      setIndexes($items(), getGroupName(), fig.repeaters);
+    };
+
     $filterNested($self.find("[data-repeater-create]"), fig.repeaters).click(
       function () {
         addItem();
@@ -313,6 +318,6 @@ $.fn.repeater = function (fig) {
   });
 
   this.setList = setList;
-
+  this.resetIndexes = resetIndexes;
   return this;
 };
